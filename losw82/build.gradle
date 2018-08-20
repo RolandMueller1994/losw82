@@ -14,6 +14,7 @@ repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+    maven { url "https://jitpack.io" }
 }
 
 dependencies {
@@ -25,5 +26,7 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
+    
+    compile group: 'com.github.RolandMueller1994', name: 'commonjavaframework', version: 'master-SNAPSHOT'
 }
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<menubar>
+<!-- 	<menu> -->
+<!-- 		<title>filemenutitle</title> -->
+<!-- 		<class>gui.menubar.NewProjectMenuItem</class> -->
+<!-- 		<class>gui.menubar.OpenProjectMenuItem</class> -->
+<!-- 		<separator/> -->
+<!-- 		<class>gui.menubar.SaveMenuItem</class> -->
+<!-- 		<class>gui.menubar.SaveAsMenuItem</class> -->
+<!-- 		<separator/> -->
+<!-- 		<class>gui.menubar.ExitMenuItem</class> -->
+<!-- 	</menu> -->
+	<menu>
+		<title>filemenutitle</title>
+	</menu>
+</menubar>
