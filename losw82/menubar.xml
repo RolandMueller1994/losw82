@@ -13,5 +13,9 @@
 <!-- 	</menu> -->
 	<menu>
 		<title>filemenutitle</title>
+		<class>projectfile.NewProjectMenuItem</class>
+		<class>projectfile.LoadMenuItem</class>
+		<class>projectfile.SaveMenuItem</class>
+		<class>projectfile.SaveAtMenuItem</class>
 	</menu>
 </menubar>

@@ -8,9 +8,13 @@ import javafx.stage.Stage;
 
 public class Losw8GUI extends Application {
 
+	private static Stage primaryStage;
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
+		
+		this.primaryStage = primaryStage;
 		
 		VBox mainBox = new VBox();
 		
@@ -30,4 +34,7 @@ public class Losw8GUI extends Application {
 		launch(args);
 	}
 	
+	public static Stage getPrimaryStage() {
+		return primaryStage;
+	}
 }

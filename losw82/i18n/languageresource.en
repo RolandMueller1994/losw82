@@ -1,0 +1,110 @@
+helpmenutitle=Help
+filemenutitle=File
+pluginmenutitle=Plugins
+configmenutitle=Configuration
+
+yes=Yes
+no=No
+ok=OK
+cancel=Cancel
+add=+
+remove=-
+delete=Delete
+play=Play
+stop=Stop
+file=File
+signalsource=Signal source
+
+main.SecondInstanceGui$SecondInstanceAlert.header=UltSigPro is already running and cannot be started twice.
+
+gui.USPGui.title=UltSigPro Ultimate Signal Processing
+gui.USPGui.signalFlowAlertTitle=Plugin configuration error
+gui.USPGui.signalFlowAlertHeader=Check your plugin configuration.
+gui.USPGui.signalFlowAlertTextInput=There is no defined input for this channel!
+gui.USPGui.signalFlowAlertTextOutput=There is no connection to the output!
+gui.USPGui.signalFlowAlertTextConnection=There are unconnected plugin inputs/outputs. 
+gui.USPGui.signalFlowAlertChannel=Channel
+
+gui.menubar.SaveProjectDialog.title=Save project
+gui.menubar.SaveProjectDialog.header=The current project contains unsaved changes. %crSave these changes before closing this project?
+
+gui.menubar.NewProjectMenuItem.title=New project
+gui.menubar.SaveMenuItem.title=Save
+gui.menubar.SaveAsMenuItem.title=Save as...
+gui.menubar.OpenProjectMenuItem.title=Open project...
+gui.menubar.ExitMenuItem.title=Exit
+gui.menubar.LanguageMenuItem.title=Language
+
+gui.menubar.HelpMenuItem.title=Help
+
+gui.menubar.AddChannelMenuItem.title=Add channel
+gui.menubar.AddChannelMenuItem.addChannelTitle=Add new channel
+
+gui.menubar.ConfigSignalSourceItem.title=Configure signal sources
+gui.menubar.ConfigSignalSourceItem$ConfigSignalSourceDialog.title=Configure signal sources
+gui.menubar.ConfigSignalSourceItem$ConfigSignalSourceDialog.name=Label
+gui.menubar.ConfigSignalSourceItem$ConfigSignalSourceDialog.frequency=Frequency
+gui.menubar.ConfigSignalSourceItem$ConfigSignalSourceDialog.amplitude=Amplitude
+gui.menubar.ConfigSignalSourceItem$ConfigSignalSourceDialog.warning=All fields have to be filled!
+
+gui.menubar.AddChannelMenuItem$AddChannelDialog.title=Add new channel
+gui.menubar.AddChannelMenuItem$AddChannelDialog.titleLabel=Name
+gui.menubar.AddChannelMenuItem$AddChannelDialog.inputLabel=Inputs
+gui.menubar.AddChannelMenuItem$AddChannelDialog.outputLabel=Outputs
+gui.menubar.AddChannelMenuItem$AddChannelDialog.warning=Enter name!
+gui.menubar.AddChannelMenuItem$AddChannelDialog.presentWarning=Name already existing!
+gui.menubar.AddChannelMenuItem$AddChannelDialog.inOutAlert=Duplicates of inputs and outputs! 
+gui.menubar.AddChannelMenuItem$AddChannelDialog.inAlert=Duplicates of inputs!
+gui.menubar.AddChannelMenuItem$AddChannelDialog.outAlert=Duplicates of outputs!
+gui.menubar.AddChannelMenuItem$AddChannelDialog.inOutAlertTitle=Channel configuration
+gui.menubar.AddChannelMenuItem$AddChannelDialog.inOutAlertHeader=Duplicates in the configuration!
+
+gui.menubar.AboutMenuItem.title=About USP
+gui.menubar.AboutMenuItem.infoAlertTitle=About UltSigPro
+gui.menubar.AboutMenuItem.infoAlertHeader=General informations about UltSigPro
+gui.menubar.AboutMenuItem.infoAlertContent=UltimateSignalProcessing%cr%crPlugin-capable environment for simulation of signal processing modules.
+
+gui.menubar.LanguageMenuItem$ChangeLanguageDialog.title=Change language
+gui.menubar.LanguageMenuItem.infoAlertHeader=Restart necessary!
+gui.menubar.LanguageMenuItem.infoAlertContent=To apply the changed language settings, UltSigPro needs to be closed and restarted.
+
+gui.menubar.USPFileReader$MissingResourcesDialog.title=Missing resources
+gui.menubar.USPFileReader$MissingResourcesDialog.header=An error occured while loading the project file.%crFor missing devices, check if they are connected and ready for use.%crIn case of missing wave files make sure, that they have not been deleted, postponed or renamed.  
+gui.menubar.USPFileReader$MissingResourcesDialog.content=Following resources could not be loaded:%cr%cr
+
+gui.soundLevelDisplay.SoundLevelBar.inputTitle=Inputs
+gui.soundLevelDisplay.SoundLevelBar.outputTitle=Outputs
+
+channel.ChannelPane$AddRemoveDialog.inputAddTitle=Add Input
+channel.ChannelPane$AddRemoveDialog.inputRemoveTitle=Remove Inputs
+channel.ChannelPane$AddRemoveDialog.outputAddTitle=Add Output
+channel.ChannelPane$AddRemoveDialog.outputRemoveTitle=Remove Output
+channel.ChannelPane$AddRemoveDialog.emptyAlertTitle=Selection
+channel.ChannelPane$AddRemoveDialog.emptyAlertHeader=A device must be chosen!
+channel.ChannelPane$AddRemoveDialog.duplicateAlertTitle=Selection
+channel.ChannelPane$AddRemoveDialog.duplicateAlertHeader=The chosen device is already existing!
+channel.ChannelPane$AddRemoveDialog.deviceLabel=Device:
+channel.ChannelPane$AddRemoveDialog.deviceLabelWave=Wave file:
+channel.gui.PluginConfigGroup$AddPluginMenuItem.title=Add plugin
+
+channel.gui.PluginConfigGroup$AddPluginMenuItem$AddPluginDialog.title=Add plugin
+
+plugins.PluginManagerMenuItem.title=Plugin management
+
+plugins.PluginManagerMenuItem$PluginManagerDialog.title=Plugin management
+plugins.PluginManagerMenuItem$PluginManagerDialog.common=General plugins
+plugins.PluginManagerMenuItem$PluginManagerDialog.sigpro=Signal processing plugins
+
+inputhandler.InputAdministrator.alertTitle=Read error
+inputhandler.InputAdministrator.alertHeader=An error occurred while reading input data. Signal processing terminated.
+inputhandler.InputAdministrator.alertText=Check your configuration and ensure that there is no further USP instance running or another application uses the requested hardware.   
+
+outputhandler.OutputAdministrator$OutputAlert.alertTitle=Output error
+outputhandler.OutputAdministrator$OutputAlert.alertHeader=An error occurred while writing output data. Signal processing terminated.
+outputhandler.OutputAdministrator$OutputAlert.alertText=Check your configuration and ensure that there is no further USP instance running or another application uses the requested hardware.
+
+iteratableinput.IteratableSignalSourceDialog.title=Signal source 
+iteratableinput.IteratableSignalSourceDialog.name=Label
+iteratableinput.IteratableSignalSourceDialog.frequency=Frequency
+iteratableinput.IteratableSignalSourceDialog.amplitude=Amplitude
+iteratableinput.IteratableSignalSourceDialog.warning=All fields have to be filled!

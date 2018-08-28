@@ -12,3 +12,13 @@ delete=Löschen
 play=Play
 stop=Stop
 file=Datei
+
+projectfile.SaveMenuItem.title=Speichern
+
+projectfile.SaveAtMenuItem.title=Speichern unter
+
+projectfile.LoadMenuItem.title=Projekt laden
+
+projectfile.NewProjectMenuItem.title=Neues Projekt
+
+projectFile.ProjectFileAccessPoint.fileChooserTitle=Speichern unter

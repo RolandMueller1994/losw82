@@ -28,5 +28,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     
     compile group: 'com.github.RolandMueller1994', name: 'commonjavaframework', version: 'master-SNAPSHOT'
+    compile 'com.fazecast:jSerialComm:[2.0.0,3.0.0)'
 }
 
