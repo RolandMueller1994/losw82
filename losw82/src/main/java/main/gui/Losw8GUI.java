@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import main.gui.guielements.ExtendedCheckBox;
+import projectfile.ProjectFileAccessPoint;
 
 public class Losw8GUI extends Application {
 
@@ -24,6 +26,8 @@ public class Losw8GUI extends Application {
 		mainBox.getChildren().add(menuBar);
 		
 		Scene scene = new Scene(mainBox);
+		
+		ProjectFileAccessPoint.getInstance().createDefaultConfig();
 		
 		primaryStage.setScene(scene);
 		primaryStage.setMaximized(true);

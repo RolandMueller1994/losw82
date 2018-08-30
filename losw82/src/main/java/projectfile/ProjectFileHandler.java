@@ -6,29 +6,26 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
+import xmlreader.XMLElement;
 import xmlreader.XMLHandler;
 
 public class ProjectFileHandler {
 	
 	private XMLHandler projectXML;
 	
-	public void setupDefault() {
-		// TODO get default from gui
-	}
-	
-	public void loadProjectFile(String path) {
+	public XMLElement loadProjectFile(String path) {
 		try {
 			projectXML = new XMLHandler(path);
-			
+			return projectXML.getRootElement();
 			// TODO insert to gui
 		} catch (ParserConfigurationException | SAXException | IOException e) {
-			setupDefault();
+			return null;
 		}
 	}
 	
-	public void saveProjectFile(String path) {
-		if(projectXML != null) {
-			projectXML.writeToNewFile(path);
-		}
+	public void saveProjectFile(String path, XMLElement root) {
+		
+		projectXML = new XMLHandler(root);
+		projectXML.writeToNewFile(path);
 	}
 }

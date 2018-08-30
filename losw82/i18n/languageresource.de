@@ -1,6 +1,7 @@
 helpmenutitle=Hilfe
 filemenutitle=Datei
 configmenutitle=Konfiguration
+editmenutitle=Bearbeiten
 
 yes=Ja
 no=Nein
@@ -21,4 +22,8 @@ projectfile.LoadMenuItem.title=Projekt laden
 
 projectfile.NewProjectMenuItem.title=Neues Projekt
 
-projectFile.ProjectFileAccessPoint.fileChooserTitle=Speichern unter
+projectFile.ProjectFileAccessPoint.fileChooserTitleSave=Speichern unter
+projectFile.ProjectFileAccessPoint.fileChooserTitleOpen=Öffnen
+
+actiontracking.RedoMenuItem.title=Wiederherstellen
+actiontracking.UndoMenuItem.title=Rückgängig

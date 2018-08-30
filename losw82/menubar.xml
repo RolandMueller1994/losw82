@@ -13,9 +13,14 @@
 <!-- 	</menu> -->
 	<menu>
 		<title>filemenutitle</title>
-		<class>projectfile.NewProjectMenuItem</class>
-		<class>projectfile.LoadMenuItem</class>
-		<class>projectfile.SaveMenuItem</class>
-		<class>projectfile.SaveAtMenuItem</class>
+		<class shortcut="ctrl:n">projectfile.NewProjectMenuItem</class>
+		<class shortcut="ctrl:l">projectfile.LoadMenuItem</class>
+		<class shortcut="ctrl:s">projectfile.SaveMenuItem</class>
+		<class shortcut="ctrl:shift:s">projectfile.SaveAtMenuItem</class>
+	</menu>
+	<menu>
+		<title>editmenutitle</title>
+		<class shortcut="ctrl:z">actiontracking.UndoMenuItem</class>
+		<class shortcut="ctrl:shift:z">actiontracking.RedoMenuItem</class>
 	</menu>
 </menubar>
