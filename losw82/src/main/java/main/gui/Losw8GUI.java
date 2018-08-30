@@ -6,6 +6,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import main.gui.guielements.ExtendedCheckBox;
+import main.gui.guielements.ExtendedRadioButtonGroup;
 import projectfile.ProjectFileAccessPoint;
 
 public class Losw8GUI extends Application {

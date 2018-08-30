@@ -5,17 +5,15 @@ import actiontracking.ActionTrackingWrapper;
 import actiontracking.UndoQueue;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.RadioButton;
 
-public class ExtendedCheckBox extends CheckBox implements ActionTrackingInterface {
+public class ExtendedRadioButton extends RadioButton implements ActionTrackingInterface {
 
 	private boolean changeFromUndoRedo = false;
 	private boolean actionTracking;
 	
-	public ExtendedCheckBox(String arg, boolean actionTracking) {
-		super(arg);
+	public ExtendedRadioButton(String text, boolean actionTracking) {
+		super(text);
 		this.actionTracking = actionTracking;
 		
 		selectedProperty().addListener(new ChangeListener<Boolean>() {
@@ -31,7 +29,7 @@ public class ExtendedCheckBox extends CheckBox implements ActionTrackingInterfac
 		});
 	}
 	
-	public ExtendedCheckBox(boolean actionTracking) {
+	public ExtendedRadioButton(boolean actionTracking) {
 		this.actionTracking = actionTracking;
 		
 		selectedProperty().addListener(new ChangeListener<Boolean>() {
@@ -46,7 +44,7 @@ public class ExtendedCheckBox extends CheckBox implements ActionTrackingInterfac
 			}
 		});
 	}
-
+	
 	private void insertToUndo() {
 		if(actionTracking) {
 			UndoQueue.getInstance().insert(this,
@@ -65,4 +63,5 @@ public class ExtendedCheckBox extends CheckBox implements ActionTrackingInterfac
 		changeFromUndoRedo = true;
 		setSelected((Boolean) wrapper.getUnduElement());
 	}
+
 }
