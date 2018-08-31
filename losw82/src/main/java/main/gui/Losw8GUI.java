@@ -3,10 +3,12 @@ package main.gui;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import main.gui.guielements.ExtendedCheckBox;
 import main.gui.guielements.ExtendedRadioButtonGroup;
+import main.gui.guielements.ExtendedTextField;
 import projectfile.ProjectFileAccessPoint;
 
 public class Losw8GUI extends Application {
@@ -25,7 +27,9 @@ public class Losw8GUI extends Application {
 		MenuBar menuBar = menuBarCreator.getMenuBar();
 		
 		mainBox.getChildren().add(menuBar);
-		
+		mainBox.getChildren().add(new ExtendedTextField("test", true));
+		mainBox.getChildren().add(new ExtendedTextField("test", true));
+		mainBox.getChildren().add(new Pane());
 		Scene scene = new Scene(mainBox);
 		
 		ProjectFileAccessPoint.getInstance().createDefaultConfig();
