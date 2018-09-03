@@ -36,6 +36,7 @@ public class ExtendedRadioButton extends RadioButton implements ActionTrackingIn
 
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				stateChangedAction(newValue);
 				if(!changeFromUndoRedo) {
 					insertToUndo();					
 				} else {
@@ -64,4 +65,8 @@ public class ExtendedRadioButton extends RadioButton implements ActionTrackingIn
 		setSelected((Boolean) wrapper.getUnduElement());
 	}
 
+	public void stateChangedAction(boolean state) {
+		// Usable by child to do actions on state change
+	}
+	
 }

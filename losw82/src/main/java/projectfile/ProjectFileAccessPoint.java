@@ -47,6 +47,7 @@ public class ProjectFileAccessPoint {
 
 	public void setProjectChanged() {
 		configChanged = true;
+		Losw8GUI.setFileChanged(true);
 	}
 	
 	public void newProjectFile() {
@@ -55,6 +56,7 @@ public class ProjectFileAccessPoint {
 		currentPath = null;
 		
 		createDefaultConfig();
+		Losw8GUI.setFileTitle("untitled");
 	}
 
 	public void openProjectFile(String path) {
@@ -80,6 +82,8 @@ public class ProjectFileAccessPoint {
 				
 				UndoQueue.getInstance().clear();
 				RedoQueue.getInstance().clear();
+				
+				Losw8GUI.setFileTitle(selectedFile.getName());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -107,6 +111,8 @@ public class ProjectFileAccessPoint {
 			if (selectedFile != null) {
 				try {
 					currentPath = selectedFile.getCanonicalPath();
+					Losw8GUI.setFileTitle(selectedFile.getName());
+					Losw8GUI.setFileChanged(false);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -133,10 +139,13 @@ public class ProjectFileAccessPoint {
 		RedoQueue.getInstance().clear();
 		
 		projectFileRoot = new XMLElement("losw82_proj");
+		Losw8GUI.setFileTitle("untitled");
+		Losw8GUI.setFileChanged(false);
 	}
 
 	public static void configChanged() {
 		configChanged = true;
+		Losw8GUI.setFileChanged(true);
 	}
 
 	private void checkSave() {

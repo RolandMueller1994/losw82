@@ -3,6 +3,8 @@ package actiontracking;
 import java.util.HashSet;
 import java.util.LinkedList;
 
+import projectfile.ProjectFileAccessPoint;
+
 public class UndoQueue {
 	
 	private static UndoQueue instance;
@@ -36,6 +38,7 @@ public class UndoQueue {
 		
 		checkLength();
 		fireElementsPresent();
+		ProjectFileAccessPoint.getInstance().setProjectChanged();
 	}
 	
 	synchronized void insert(InternallActionTrackingWrapper wrapper) {
@@ -43,6 +46,7 @@ public class UndoQueue {
 		
 		checkLength();
 		fireElementsPresent();
+		ProjectFileAccessPoint.getInstance().setProjectChanged();
 	}
 	
 	public synchronized void undo() {

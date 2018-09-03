@@ -25,5 +25,7 @@ projectfile.NewProjectMenuItem.title=Neues Projekt
 projectFile.ProjectFileAccessPoint.fileChooserTitleSave=Speichern unter
 projectFile.ProjectFileAccessPoint.fileChooserTitleOpen=Öffnen
 
+switchconfig.SwitchConfigGUI.switch=Taster
+
 actiontracking.RedoMenuItem.title=Wiederherstellen
 actiontracking.UndoMenuItem.title=Rückgängig

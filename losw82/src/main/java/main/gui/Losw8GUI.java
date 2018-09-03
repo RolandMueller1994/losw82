@@ -1,6 +1,7 @@
 package main.gui;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.Pane;
@@ -10,10 +11,13 @@ import main.gui.guielements.ExtendedCheckBox;
 import main.gui.guielements.ExtendedRadioButtonGroup;
 import main.gui.guielements.ExtendedTextField;
 import projectfile.ProjectFileAccessPoint;
+import switchconfig.SwitchConfigMainGUI;
 
 public class Losw8GUI extends Application {
 
 	private static Stage primaryStage;
+	private static String fileTitle;
+	private static boolean fileChanged;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -27,9 +31,7 @@ public class Losw8GUI extends Application {
 		MenuBar menuBar = menuBarCreator.getMenuBar();
 		
 		mainBox.getChildren().add(menuBar);
-		mainBox.getChildren().add(new ExtendedTextField("test", true));
-		mainBox.getChildren().add(new ExtendedTextField("test", true));
-		mainBox.getChildren().add(new Pane());
+		mainBox.getChildren().add(new SwitchConfigMainGUI());
 		Scene scene = new Scene(mainBox);
 		
 		ProjectFileAccessPoint.getInstance().createDefaultConfig();
@@ -45,5 +47,26 @@ public class Losw8GUI extends Application {
 	
 	public static Stage getPrimaryStage() {
 		return primaryStage;
+	}
+	
+	public static void setFileTitle(String title) {
+		primaryStage.setTitle(title);
+		fileTitle = title;
+	}
+	
+	public static void setFileChanged(boolean changed) {
+		fileChanged = changed;
+		
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				if(fileChanged) {
+					primaryStage.setTitle(fileTitle + " *");
+				} else {
+					primaryStage.setTitle(fileTitle);
+				}
+			}
+		});
 	}
 }
