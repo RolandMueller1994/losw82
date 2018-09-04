@@ -9,11 +9,20 @@ public class PresetRadioButton extends ExtendedRadioButton {
 	public PresetRadioButton(SwitchConfigWrapper switchConfig) {
 		super("Preset", true);
 		
-		this.switchConfig = switchConfig;
+		setSwitchConfig(switchConfig);
 	}
 	
 	@Override
 	public void stateChangedAction(boolean state) {
-		switchConfig.setPreset(true);
+		switchConfig.setPreset(state);
+	}
+	
+	public void setSwitchConfig(SwitchConfigWrapper switchConfig) {
+		this.switchConfig = switchConfig;
+		if(isSelected() != switchConfig.isPreset()) {
+			changeFromUndoRedo = true;
+			
+			setSelected(switchConfig.isPreset());			
+		}
 	}
 }

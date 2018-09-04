@@ -9,7 +9,7 @@ import javafx.scene.control.RadioButton;
 
 public class ExtendedRadioButton extends RadioButton implements ActionTrackingInterface {
 
-	private boolean changeFromUndoRedo = false;
+	protected boolean changeFromUndoRedo = false;
 	private boolean actionTracking;
 	
 	public ExtendedRadioButton(String text, boolean actionTracking) {
@@ -20,6 +20,7 @@ public class ExtendedRadioButton extends RadioButton implements ActionTrackingIn
 
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				stateChangedAction(newValue);
 				if(!changeFromUndoRedo) {
 					insertToUndo();					
 				} else {

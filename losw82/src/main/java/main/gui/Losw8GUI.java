@@ -2,7 +2,10 @@ package main.gui;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.Pane;
@@ -13,6 +16,7 @@ import main.gui.guielements.ExtendedRadioButtonGroup;
 import main.gui.guielements.ExtendedTextField;
 import projectfile.ProjectFileAccessPoint;
 import switchconfig.LoopConfigGUI;
+import switchconfig.SwitchConfigDataHandler;
 import switchconfig.SwitchConfigMainGUI;
 
 public class Losw8GUI extends Application {
@@ -35,10 +39,15 @@ public class Losw8GUI extends Application {
 		mainBox.getChildren().add(menuBar);
 		
 		SplitPane splitPane = new SplitPane();
-		splitPane.getItems().add(new SwitchConfigMainGUI());
+		SwitchConfigMainGUI switchGUI = new SwitchConfigMainGUI();
+		splitPane.getItems().add(switchGUI);
 		splitPane.getItems().add(LoopConfigGUI.getInstance());
 		
 		mainBox.getChildren().add(splitPane);
+		
+		BankChoiceBox bankChoice = new BankChoiceBox(switchGUI);
+		
+		mainBox.getChildren().add(bankChoice);
 		Scene scene = new Scene(mainBox);
 		
 		ProjectFileAccessPoint.getInstance().createDefaultConfig();

@@ -17,8 +17,8 @@ public class ABStateRadioButton extends ExtendedRadioButton implements LoopConfi
 			LoopConfigGUI.getInstance().registerLoopConfigListener(this, "AB 2");
 		}
 		
-		this.switchConfig = switchConfig;
 		this.ab1 = ab1;
+		setSwitchConfig(switchConfig);
 	}
 	
 	@Override
@@ -33,5 +33,21 @@ public class ABStateRadioButton extends ExtendedRadioButton implements LoopConfi
 	@Override
 	public void NameChanged(String name) {
 		setText(name);
+	}
+	
+	public void setSwitchConfig(SwitchConfigWrapper switchConfig) {
+		this.switchConfig = switchConfig;
+		
+		if(ab1) {
+			if(isSelected() != switchConfig.isAb1()) {
+				changeFromUndoRedo = true;
+				setSelected(switchConfig.isAb1());
+			}
+		} else {
+			if(isSelected() != switchConfig.isAb2()) {
+				changeFromUndoRedo = true;
+				setSelected(switchConfig.isAb2());
+			}
+		}
 	}
 }

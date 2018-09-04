@@ -1,5 +1,8 @@
 package switchconfig;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+
 import i18n.LanguageResourceHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
@@ -18,9 +21,15 @@ public class SwitchConfigGUI extends GridPane {
 	private SwitchConfigWrapper switchConfig;
 	private int switchNr;
 	
-	public SwitchConfigGUI(int switchNr) {
+	private HashMap<Integer, LoopStateRadioButton> loopStateButtons;
+	private ABStateRadioButton ab1Button;
+	private ABStateRadioButton ab2Button;
+	private PresetRadioButton presetButton;
+	
+	public SwitchConfigGUI(int switchNr, SwitchConfigWrapper switchConfig) {
 		this.switchNr = switchNr;
-		this.switchConfig = new SwitchConfigWrapper(switchNr, false);
+		this.switchConfig = switchConfig;
+		loopStateButtons = new HashMap<>();
 		
 		try {
 			add(new Label(LanguageResourceHandler.getInstance().getLocalizedText(SwitchConfigGUI.class, SWITCH) + " " + switchNr), 0, 0);
@@ -29,20 +38,37 @@ public class SwitchConfigGUI extends GridPane {
 			e.printStackTrace();
 		}
 		
-		add(new PresetRadioButton(switchConfig), 0, 1);
+		presetButton = new PresetRadioButton(switchConfig); 
+		add(presetButton, 0, 1);
 		
 		for(int i=0; i<8;i++) {
-			add(new LoopStateRadioButton(i, switchConfig), 0, 2+i);
+			LoopStateRadioButton button = new LoopStateRadioButton(i, switchConfig);
+			add(button, 0, 2+i);
+			loopStateButtons.put(i, button);
 		}
 		
-		add(new ABStateRadioButton(true, switchConfig), 0, 10);
-		add(new ABStateRadioButton(false, switchConfig), 0, 11);
+		ab1Button = new ABStateRadioButton(true, switchConfig); 
+		add(ab1Button, 0, 10);
+		ab2Button = new ABStateRadioButton(false, switchConfig);
+		add(ab2Button, 0, 11);
 		
 		setPadding(new Insets(5));
 		setHgap(5);
 		setVgap(5);
 		
 		setBorder(new Border(new BorderStroke(null, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(1))));
+	}
+	
+	public void setSwitchConfig(SwitchConfigWrapper data) {
+		this.switchConfig = data;
+		
+		presetButton.setSwitchConfig(data);
+		ab1Button.setSwitchConfig(data);
+		ab2Button.setSwitchConfig(data);
+		
+		for(LoopStateRadioButton loopButton : loopStateButtons.values()) {
+			loopButton.setSwitchConfig(data);
+		}
 	}
 	
 }

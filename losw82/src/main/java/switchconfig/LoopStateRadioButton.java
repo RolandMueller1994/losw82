@@ -10,9 +10,9 @@ public class LoopStateRadioButton extends ExtendedRadioButton implements LoopCon
 	public LoopStateRadioButton(int loop, SwitchConfigWrapper switchData) {
 		super("Loop " + loop, true);
 		this.loop = loop;
-		this.switchData = switchData;
 		
 		LoopConfigGUI.getInstance().registerLoopConfigListener(this, "Loop " + loop);
+		setSwitchConfig(switchData);
 	}
 
 	@Override
@@ -23,5 +23,13 @@ public class LoopStateRadioButton extends ExtendedRadioButton implements LoopCon
 	@Override
 	public void NameChanged(String name) {
 		setText(name);
+	}
+	
+	public void setSwitchConfig(SwitchConfigWrapper switchConfig) {
+		this.switchData = switchConfig;
+		if(isSelected() != switchConfig.getLoopActive(loop)) {
+			changeFromUndoRedo = true;
+			setSelected(switchConfig.getLoopActive(loop));			
+		}
 	}
 }
