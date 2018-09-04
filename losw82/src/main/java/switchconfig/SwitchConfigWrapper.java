@@ -1,5 +1,7 @@
 package switchconfig;
 
+import xmlreader.XMLElement;
+
 public class SwitchConfigWrapper {
 	
 	private int switchNumber;
@@ -74,5 +76,40 @@ public class SwitchConfigWrapper {
 	
 	public void setAb2(boolean ab2) {
 		this.ab2 = ab2;
+	}
+	
+	public void getXMLConfig(XMLElement parent) {
+		XMLElement swNr = new XMLElement("number");
+		swNr.setTextContent(new Integer(switchNumber).toString());
+		parent.addElement(swNr);
+		
+		XMLElement presetElem = new XMLElement("preset");
+		presetElem.setTextContent(new Boolean(preset).toString());
+		parent.addElement(presetElem);
+		
+		XMLElement inactiveElem = new XMLElement("inactive");
+		inactiveElem.setTextContent(new Boolean(inactive).toString());
+		parent.addElement(inactiveElem);
+		
+		for(int i=0; i<loops.length; i++) {
+			XMLElement loopElem = new XMLElement("loop");
+			
+			XMLElement nrElem = new XMLElement("number");
+			nrElem.setTextContent(new Integer(i).toString());
+			XMLElement stateElem = new XMLElement("state");
+			stateElem.setTextContent(new Boolean(loops[i]).toString());
+			
+			loopElem.addElement(nrElem);
+			loopElem.addElement(stateElem);
+			parent.addElement(loopElem);
+		}
+		
+		XMLElement ab1Element = new XMLElement("ab1");
+		ab1Element.setTextContent(new Boolean(ab1).toString());
+		parent.addElement(ab1Element);
+		
+		XMLElement ab2Element = new XMLElement("ab2");
+		ab2Element.setTextContent(new Boolean(ab2).toString());
+		parent.addElement(ab2Element);
 	}
 }

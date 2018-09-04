@@ -4,18 +4,26 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.SplitPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import main.gui.guielements.ExtendedCheckBox;
 import main.gui.guielements.ExtendedRadioButtonGroup;
 import main.gui.guielements.ExtendedTextField;
 import projectfile.ProjectFileAccessPoint;
+import switchconfig.BankChangeConfig;
 import switchconfig.LoopConfigGUI;
+import switchconfig.OverrideGUI;
 import switchconfig.SwitchConfigDataHandler;
 import switchconfig.SwitchConfigMainGUI;
 
@@ -45,9 +53,20 @@ public class Losw8GUI extends Application {
 		
 		mainBox.getChildren().add(splitPane);
 		
-		BankChoiceBox bankChoice = new BankChoiceBox(switchGUI);
+		GridPane lowerGrid = new GridPane();
+		HBox configBox = new HBox();
 		
-		mainBox.getChildren().add(bankChoice);
+		BankChangeConfig bankChange = new BankChangeConfig(switchGUI);
+		ProjectFileAccessPoint.getInstance().setBankChangeComponent(bankChange);
+		
+		BankChoiceBox bankChoice = new BankChoiceBox(switchGUI);
+		configBox.getChildren().add(bankChoice);
+		configBox.getChildren().add(bankChange);
+		lowerGrid.add(configBox, 0, 0);
+		OverrideGUI overrideGUI = new OverrideGUI();
+		lowerGrid.add(overrideGUI, 0, 1);
+		
+		mainBox.getChildren().add(lowerGrid);
 		Scene scene = new Scene(mainBox);
 		
 		ProjectFileAccessPoint.getInstance().createDefaultConfig();

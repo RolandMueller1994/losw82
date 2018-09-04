@@ -7,6 +7,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -25,6 +26,10 @@ public class ExtendedChoiceBox<T> extends GridPane implements ActionTrackingInte
 			this.label = new Label(label);
 			add(this.label, 0, 0);
 		}
+		
+		setPadding(new Insets(5));
+		setHgap(5);
+		setVgap(5);
 		
 		choice = new ChoiceBox<>();
 		add(choice, choiceColumn, 0);
@@ -63,6 +68,10 @@ public class ExtendedChoiceBox<T> extends GridPane implements ActionTrackingInte
 	public void setValue(T element) {
 		changedFromUndoRedo = true;
 		choice.setValue(element);
+	}
+	
+	public T getValue() {
+		return choice.getValue();
 	}
 	
 	protected void stateChanged(T selected) {

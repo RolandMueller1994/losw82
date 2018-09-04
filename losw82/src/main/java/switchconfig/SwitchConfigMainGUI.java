@@ -31,5 +31,10 @@ public class SwitchConfigMainGUI extends GridPane {
 					.setSwitchConfig(SwitchConfigDataHandler.getInstance().getSwitchConfigForBank(bankNr).get(switchNr));
 		}
 	}
+	
+	public void inactiveSwitches(boolean inactive) {
+		switchConfigGUI.get(4).setInactive(inactive);
+		switchConfigGUI.get(9).setInactive(inactive);
+	}
 
 }

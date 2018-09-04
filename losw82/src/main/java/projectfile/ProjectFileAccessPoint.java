@@ -14,6 +14,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import main.gui.Losw8GUI;
 import resourceframework.ResourceProviderException;
+import switchconfig.BankChangeConfig;
+import switchconfig.LoopConfigGUI;
+import switchconfig.SwitchConfigDataHandler;
 import xmlreader.XMLElement;
 
 public class ProjectFileAccessPoint {
@@ -30,6 +33,8 @@ public class ProjectFileAccessPoint {
 
 	private String currentPath;
 	private static boolean configChanged;
+	
+	private BankChangeConfig bankChange;
 
 	private static ProjectFileAccessPoint instance;
 
@@ -113,6 +118,7 @@ public class ProjectFileAccessPoint {
 					currentPath = selectedFile.getCanonicalPath();
 					Losw8GUI.setFileTitle(selectedFile.getName());
 					Losw8GUI.setFileChanged(false);
+
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -120,18 +126,36 @@ public class ProjectFileAccessPoint {
 			}
 		}
 
-		if (currentPath.contains(".")) {
-			currentPath = currentPath.substring(0, currentPath.indexOf("."));
+		if(currentPath != null) {
+			projectFileRoot = new XMLElement("losw82_proj");
+			XMLElement bankChangeElem = new XMLElement("bank_change");
+			bankChangeElem.setTextContent(bankChange.getValue());
+			XMLElement loopNames = new XMLElement("loop_names");
+			projectFileRoot.addElement(loopNames);
+			XMLElement swData = new XMLElement("switch_data");
+			projectFileRoot.addElement(swData);
+			
+			projectFileRoot.addElement(bankChangeElem);
+			LoopConfigGUI.getInstance().getXMLConfig(loopNames);
+			SwitchConfigDataHandler.getInstance().getXMLConfig(swData);
+			
+			if (currentPath.contains(".")) {
+				currentPath = currentPath.substring(0, currentPath.indexOf("."));
+			}
+			currentPath += ".losw82_proj";
+			
+			fileHandler.saveProjectFile(currentPath, projectFileRoot);
+			configChanged = false;
+			
+			UndoQueue.getInstance().clear();
+			RedoQueue.getInstance().clear();			
 		}
-		currentPath += ".losw82_proj";
-
-		fileHandler.saveProjectFile(currentPath, projectFileRoot);
-		configChanged = false;
-		
-		UndoQueue.getInstance().clear();
-		RedoQueue.getInstance().clear();
 	}
 
+	public void setBankChangeComponent(BankChangeConfig bankChange) {
+		this.bankChange = bankChange;
+	}
+	
 	public void createDefaultConfig() {
 		checkSave();
 
