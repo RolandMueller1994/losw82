@@ -4,6 +4,7 @@ import actiontracking.ActionTrackingInterface;
 import actiontracking.ActionTrackingWrapper;
 import actiontracking.RedoQueue;
 import actiontracking.UndoQueue;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
@@ -52,10 +53,11 @@ public class ExtendedTextField extends TextField implements ActionTrackingInterf
 				
 				if(undo.match(event)) {
 					UndoQueue.getInstance().undo();
+					event.consume();
 				} else if(redo.match(event)) {
 					RedoQueue.getInstance().redo();
+					event.consume();
 				}
-				event.consume();
 			}
 		});
 	}
@@ -73,14 +75,27 @@ public class ExtendedTextField extends TextField implements ActionTrackingInterf
 		}
 	}
 	
+	protected synchronized void stateChanged() {
+		
+	}
+	
 	private synchronized void insertUndo() {
-
-		String newValue = getText();
-		if(!newValue.equals(oldValue)) {
-			UndoQueue.getInstance().insert(this, new ActionTrackingWrapper(newValue, oldValue));	
-			oldValue = newValue;
-			undoInsertThreadRunning = false;
-			undoInsertRunnable = null;			
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				stateChanged();
+			}
+		});
+	
+		if(actionTracking) {
+			String newValue = getText();
+			if(!newValue.equals(oldValue)) {
+				UndoQueue.getInstance().insert(this, new ActionTrackingWrapper(newValue, oldValue));	
+				oldValue = newValue;
+				undoInsertThreadRunning = false;
+				undoInsertRunnable = null;			
+			}			
 		}
 	}
 	
@@ -92,6 +107,7 @@ public class ExtendedTextField extends TextField implements ActionTrackingInterf
 		
 		setText((String) wrapper.getReduElement());
 		oldValue = (String) wrapper.getReduElement();
+		stateChanged();
 	}
 
 	@Override
@@ -99,6 +115,7 @@ public class ExtendedTextField extends TextField implements ActionTrackingInterf
 		eventFromActionTracking = true;
 		
 		setText((String) wrapper.getUnduElement());
+		stateChanged();
 	}
 	
 	private class UndoInsertRunnable implements Runnable {
