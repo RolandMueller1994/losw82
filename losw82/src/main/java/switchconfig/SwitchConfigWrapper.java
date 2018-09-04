@@ -112,4 +112,36 @@ public class SwitchConfigWrapper {
 		ab2Element.setTextContent(new Boolean(ab2).toString());
 		parent.addElement(ab2Element);
 	}
+	
+	public void setXMLConfig(XMLElement elem) {
+		
+		for(XMLElement elem1 : elem.getElements()) {
+			String tag = elem1.getTag();
+			
+			if(tag == "number") {
+				switchNumber = new Integer(elem1.getTextContent());
+			} else if(tag == "preset") {
+				preset = new Boolean(elem1.getTextContent());
+			} else if(tag == "ab1") {
+				ab1 = new Boolean(elem1.getTextContent());
+			} else if(tag == "ab2") {
+				ab2 = new Boolean(elem1.getTextContent());
+			} else if(tag == "loop") {
+				int loopNo = -1;
+				boolean loopState = false;
+				for(XMLElement loopElem : elem1.getElements()) {
+					if(loopElem.getTag() == "number") {
+						loopNo = new Integer(loopElem.getTextContent());
+					} else if(loopElem.getTag() == "state") {
+						loopState = new Boolean(loopElem.getTextContent());
+					}
+				}
+				
+				if(loopNo != -1) {
+					loops[loopNo] = loopState;
+				}
+			}
+		}
+		
+	}
 }

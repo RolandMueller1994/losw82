@@ -196,4 +196,42 @@ public class LoopConfigGUI extends GridPane {
 		parent.addElement(ab1Elem);
 		parent.addElement(ab2Elem);
 	}
+	
+	public void setXMLConfig(XMLElement elem) {
+		
+		for(XMLElement swElem : elem.getElements()) {
+			if(swElem.getTag() == "loop0") {
+				loop0.eventFromActionTracking = true;
+				loop0.setText(swElem.getTextContent());
+			} else if(swElem.getTag() == "loop1") {
+				loop1.eventFromActionTracking = true;
+				loop1.setText(swElem.getTextContent());
+			} else if(swElem.getTag() == "loop2") {
+				loop2.eventFromActionTracking = true;
+				loop2.setText(swElem.getTextContent());
+			} else if(swElem.getTag() == "loop3") {
+				loop3.eventFromActionTracking = true;
+				loop3.setText(swElem.getTextContent());
+			} else if(swElem.getTag() == "loop4") {
+				loop4.eventFromActionTracking = true;
+				loop4.setText(swElem.getTextContent());
+			} else if(swElem.getTag() == "loop5") {
+				loop5.eventFromActionTracking = true;
+				loop5.setText(swElem.getTextContent());
+			} else if(swElem.getTag() == "loop6") {
+				loop6.eventFromActionTracking = true;
+				loop6.setText(swElem.getTextContent());
+			} else if(swElem.getTag() == "loop7") {
+				loop7.eventFromActionTracking = true;
+				loop7.setText(swElem.getTextContent());
+			} else if(swElem.getTag() == "ab1") {
+				ab1.eventFromActionTracking = true;
+				ab1.setText(swElem.getTextContent());
+			} else if(swElem.getTag() == "ab2") {
+				ab2.eventFromActionTracking = true;
+				ab1.setText(swElem.getTextContent());
+			}
+		}
+		
+	}
 }

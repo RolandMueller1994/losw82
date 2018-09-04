@@ -17,7 +17,7 @@ import javafx.scene.input.KeyEvent;
 public class ExtendedTextField extends TextField implements ActionTrackingInterface {
 
 	private boolean actionTracking;
-	private boolean eventFromActionTracking;
+	public boolean eventFromActionTracking;
 	
 	private boolean undoInsertThreadRunning;
 	private UndoInsertRunnable undoInsertRunnable;

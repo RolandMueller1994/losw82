@@ -33,6 +33,9 @@ public class Losw8GUI extends Application {
 	private static String fileTitle;
 	private static boolean fileChanged;
 	
+	private static BankChoiceBox bankChoice;
+	private static SwitchConfigMainGUI switchGUI;
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
@@ -47,7 +50,7 @@ public class Losw8GUI extends Application {
 		mainBox.getChildren().add(menuBar);
 		
 		SplitPane splitPane = new SplitPane();
-		SwitchConfigMainGUI switchGUI = new SwitchConfigMainGUI();
+		switchGUI = new SwitchConfigMainGUI();
 		splitPane.getItems().add(switchGUI);
 		splitPane.getItems().add(LoopConfigGUI.getInstance());
 		
@@ -59,7 +62,7 @@ public class Losw8GUI extends Application {
 		BankChangeConfig bankChange = new BankChangeConfig(switchGUI);
 		ProjectFileAccessPoint.getInstance().setBankChangeComponent(bankChange);
 		
-		BankChoiceBox bankChoice = new BankChoiceBox(switchGUI);
+		bankChoice = new BankChoiceBox(switchGUI);
 		configBox.getChildren().add(bankChoice);
 		configBox.getChildren().add(bankChange);
 		lowerGrid.add(configBox, 0, 0);
@@ -103,5 +106,13 @@ public class Losw8GUI extends Application {
 				}
 			}
 		});
+	}
+	
+	public static BankChoiceBox getBankChoice() {
+		return bankChoice;
+	}
+	
+	public static SwitchConfigMainGUI getSwConfMainGUI() {
+		return switchGUI;
 	}
 }

@@ -64,4 +64,40 @@ public class SwitchConfigDataHandler {
 		
 	}
 	
+	public void setXMLConfig(XMLElement elem) {
+		
+		for(XMLElement child : elem.getElements()) {
+			if(child.getTag() == "bank") {
+				int bankNr = -1;
+				XMLElement switches = null;
+				for(XMLElement bankChild : child.getElements()) {
+					if(bankChild.getTag() == "number") {
+						bankNr = new Integer(bankChild.getTextContent());
+					} else if(bankChild.getTag() == "switches") {
+						switches = bankChild;
+					}
+				}
+				
+				if(bankNr != -1 && switches != null) {
+					
+					HashMap<Integer, SwitchConfigWrapper> switchData = data.get(bankNr);
+					
+					for(XMLElement switchElem : switches.getElements()) {
+						if(switchElem.getTag().contains("sw")) {
+							String tag = switchElem.getTag();
+							
+							tag = tag.replace("sw", "");
+							int swNr = new Integer(tag);
+							switchData.get(swNr).setXMLConfig(switchElem);
+						}
+					}
+					
+				}
+				
+				
+			}
+		}
+		
+	}
+	
 }

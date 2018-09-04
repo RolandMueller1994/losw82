@@ -17,6 +17,7 @@ import resourceframework.ResourceProviderException;
 import switchconfig.BankChangeConfig;
 import switchconfig.LoopConfigGUI;
 import switchconfig.SwitchConfigDataHandler;
+import switchconfig.SwitchConfigMainGUI;
 import xmlreader.XMLElement;
 
 public class ProjectFileAccessPoint {
@@ -64,7 +65,7 @@ public class ProjectFileAccessPoint {
 		Losw8GUI.setFileTitle("untitled");
 	}
 
-	public void openProjectFile(String path) {
+	public void openProjectFile() {
 
 		checkSave();
 
@@ -85,10 +86,26 @@ public class ProjectFileAccessPoint {
 				ProjectFileHandler handler = new ProjectFileHandler();
 				projectFileRoot = handler.loadProjectFile(currentPath);
 				
+				for(XMLElement elem : projectFileRoot.getElements()) {
+					
+					if(elem.getTag() == "bank_change") {
+						bankChange.setXMLConfig(elem);
+					} else if(elem.getTag() == "loop_names") {
+						LoopConfigGUI.getInstance().setXMLConfig(elem);
+					} else if(elem.getTag() == "switch_data") {
+						SwitchConfigDataHandler.getInstance().setXMLConfig(elem);
+					}
+					
+				}
+				
+				Losw8GUI.getBankChoice().setValue(0);
+				Losw8GUI.getSwConfMainGUI().changeBank(0);
+				
 				UndoQueue.getInstance().clear();
 				RedoQueue.getInstance().clear();
 				
 				Losw8GUI.setFileTitle(selectedFile.getName());
+				//Losw8GUI.setFileChanged(false);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -148,7 +165,9 @@ public class ProjectFileAccessPoint {
 			configChanged = false;
 			
 			UndoQueue.getInstance().clear();
-			RedoQueue.getInstance().clear();			
+			RedoQueue.getInstance().clear();	
+			
+			Losw8GUI.setFileChanged(false);
 		}
 	}
 

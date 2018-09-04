@@ -66,8 +66,10 @@ public class ExtendedChoiceBox<T> extends GridPane implements ActionTrackingInte
 	}
 	
 	public void setValue(T element) {
-		changedFromUndoRedo = true;
-		choice.setValue(element);
+		if(element.equals(getValue())) {
+			changedFromUndoRedo = true;
+			choice.setValue(element);			
+		}
 	}
 	
 	public T getValue() {

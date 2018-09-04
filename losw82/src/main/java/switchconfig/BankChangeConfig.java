@@ -33,4 +33,8 @@ public class BankChangeConfig extends ExtendedChoiceBox<String> {
 	public void getXMLConfig(XMLElement parent) {
 		parent.setTextContent(getValue());
 	}
+	
+	public void setXMLConfig(XMLElement elem) {
+		setValue(elem.getTextContent());
+	}
 }
