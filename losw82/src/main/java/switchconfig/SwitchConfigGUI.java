@@ -35,8 +35,8 @@ public class SwitchConfigGUI extends GridPane {
 		loopStateButtons = new HashMap<>();
 
 		try {
-			title = new Label(LanguageResourceHandler.getInstance().getLocalizedText(SwitchConfigGUI.class, SWITCH) + " "
-					+ switchNr);
+			title = new Label(LanguageResourceHandler.getInstance().getLocalizedText(SwitchConfigGUI.class, SWITCH)
+					+ " " + switchNr);
 			add(title, 0, 0);
 		} catch (ResourceProviderException e) {
 			// TODO Auto-generated catch block

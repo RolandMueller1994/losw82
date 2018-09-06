@@ -2,6 +2,7 @@ package main;
 
 import java.io.IOException;
 
+import arduinoCom.ArduinoComHandler;
 import i18n.LanguageResourceHandler;
 import main.gui.Losw8GUI;
 import resourceframework.GlobalResourceProvider;
@@ -29,6 +30,8 @@ public class Losw82Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		ArduinoComHandler.getInstance().stopComThread();
 		
 	}	
 }

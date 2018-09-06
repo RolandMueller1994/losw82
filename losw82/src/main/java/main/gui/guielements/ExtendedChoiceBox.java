@@ -76,6 +76,10 @@ public class ExtendedChoiceBox<T> extends GridPane implements ActionTrackingInte
 		return choice.getValue();
 	}
 	
+	public void removeAllChoices() {
+		choice.getItems().clear();
+	}
+	
 	protected void stateChanged(T selected) {
 		
 	}
